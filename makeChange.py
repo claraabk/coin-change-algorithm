@@ -41,21 +41,21 @@ def makeChange(coins, total):
     2.3. Use recursion to continue the combination and change total to the difference we found on 2.1 an the index to the iterarion we are on (to understand which coin we are using at the moment)
     2.4. Remove the coins from the temporary array because it needs to be empty for the next combination """
 
-def findPossibilities(combinations, coins, temp, total, index = 0):
+def findPossibilities(combinations, coins, temp, total, counter = 0):
      
     if total == 0 :
          
         combinations.append(list(temp))
         return combinations
        
-    for i in range(index, len(coins)):
+    for coin in range(counter, len(coins)):
  
-        if total - coins[i] >= 0:
+        if total - coins[coin] >= 0:
  
-            temp.append(coins[i])
-            findPossibilities(combinations, coins, temp, total-coins[i], i)
+            temp.append(coins[coin])
+            findPossibilities(combinations, coins, temp, total-coins[coin], coin)
 
-            temp.remove(coins[i])
+            temp.remove(coins[coin])
 
 coins = [25, 10, 5, 1]
 total = int(input())
