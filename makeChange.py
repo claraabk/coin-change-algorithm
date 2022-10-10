@@ -9,10 +9,10 @@
     4.4. Change from 0 to how many times it appear in the Array metioned in 4.1
  5. Return the array making sure no combination is repeated """
 
-def makeChange(coins, value):
+def makeChange(coins, total):
     combinations = []
 
-    findPossibilities(combinations, coins, [], value) 
+    findPossibilities(combinations, coins, [], total) 
                 
     result = []
 
@@ -32,33 +32,33 @@ def makeChange(coins, value):
     return sorted(result)
 
 """ The function bellow will:
- 1. Check if the value is zero, if so it means the combination is already made
+ 1. Check if the total is zero, if so it means the combination is already made
     1.1. Append the combination to Array of all combinations
     1.2. Return Array of combinations
  2. Iterate through a loop using range of Array of coins
-    2.1. Get the difference between value and the coin (if it is positive it means we still need to finish the combination because value is not complete)
+    2.1. Get the difference between total and the coin (if it is positive it means we still need to finish the combination because total is not complete)
     2.2. Append the coin we are using to a temporary array that keeps the combination set
-    2.3. Use recursion to continue the combination and change value to the difference we found on 2.1 an the index to the iterarion we are on (to understand which coin we are using at the moment)
+    2.3. Use recursion to continue the combination and change total to the difference we found on 2.1 an the index to the iterarion we are on (to understand which coin we are using at the moment)
     2.4. Remove the coins from the temporary array because it needs to be empty for the next combination """
 
-def findPossibilities(combinations, coins, temp, value, index = 0):
+def findPossibilities(combinations, coins, temp, total, index = 0):
      
-    if value == 0 :
+    if total == 0 :
          
         combinations.append(list(temp))
         return combinations
        
     for i in range(index, len(coins)):
  
-        if value - coins[i] >= 0:
+        if total - coins[i] >= 0:
  
             temp.append(coins[i])
-            findPossibilities(combinations, coins, temp, value-coins[i], i)
+            findPossibilities(combinations, coins, temp, total-coins[i], i)
 
             temp.remove(coins[i])
 
 coins = [25, 10, 5, 1]
-value = int(input())
-combinations = makeChange(coins, value)
+total = int(input())
+combinations = makeChange(coins, total)
 
 print(combinations)
