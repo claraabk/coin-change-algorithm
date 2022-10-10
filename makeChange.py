@@ -1,6 +1,3 @@
-from array import array
-from multiprocessing.dummy import Array
-
 """ The function bellow will:
  1. Create an Array for the result we want to obtain
  2. Call a function that return all possible combinations
