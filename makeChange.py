@@ -43,10 +43,10 @@ def makeChange(coins, value):
 
 def findPossibilities(combinations, coins, temp, value, index = 0):
      
-    if(value == 0):
+    if value == 0 :
          
         combinations.append(list(temp))
-        return
+        return combinations
        
     for i in range(index, len(coins)):
  
